@@ -3,7 +3,7 @@
   hosts: all
   sources:
     - ansible.eda.range:
-        limit: 2
+        limit: 5
   rules:
     - name: Say Hello
       condition: event.i == 1
