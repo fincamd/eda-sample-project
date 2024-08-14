@@ -1,0 +1,18 @@
+---
+- name: Simple shutdown after event in webhook
+  hosts: all
+  sources:
+    - ansible.eda.range:
+        limit: 10
+        delay: 5
+  rules:
+    - name: Set event
+      condition: event.payload.i == 1
+      actions:
+        - debug:
+            msg: "Webhook event received"
+        - debug:
+            msg: "{{event}}"
+        - shutdown:
+            message: "Shutting down activation"
+
